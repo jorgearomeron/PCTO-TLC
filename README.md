@@ -13,19 +13,12 @@ Per questa prima edizione dell’iniziativa le Scuole coinvolte nei percorsi PCT
 <p align="center"><img src="https://github.com/jorgearomeron/Arduino-PCTO-TLC/blob/main/ELFICI.png?raw=true" width="350" title="hover text"></p> 
 
 
-## Sommario::
+## Sommario:
 ---
 
-- [Esempio le antenne di ricetrasmissione](#Esempio le antenne di ricetrasmissione)
-- [Esempio la trasformazione dell’immagine con un filtro](#Esempio la trasformazione dell’immagine con un filtro)
-- [Guía de usuario](#guía-de-usuario)
-- [Guía de instalación](#guía-de-instalación)
-- [Cómo contribuir](#cómo-contribuir)
-- [Código de conducta](#código-de-conducta)
-- [Autor/es](#autores)
-- [Información adicional](#información-adicional)
-- [Licencia](#licencia)
-- [Limitación de responsabilidades - Solo BID](#limitación-de-responsabilidades)
+- [Esempio le antenne di ricetrasmissione](#Esempio-le-antenne-di-ricetrasmissione)
+- [Esempio la trasformazione dell’immagine con un filtro](#Esempio-la-trasformazione-dell’immagine-con-un-filtro)
+- [Esempio dall’immagine rilevata, processata, filtrata e poi trasmessa](#Esempio-dall’immagine-rilevata,-processata,-filtrata-e-poi-trasmessa)
 
 ## Esempio le antenne di ricetrasmissione
 ---
@@ -35,6 +28,6 @@ Studio di un elemento dello smartphone dal punto di vista delle telecomunicazion
 ---
 Studio di un elemento dello smartphone dal punto di vista delle telecomunicazioni (esempio la trasformazione dell’immagine con un filtro). Esercitazione in gruppo su scheda ARDUINO di un esempio.
 
-## Eesempio dall’immagine rilevata, processata, filtrata e poi trasmessa
+## Esempio dall’immagine rilevata, processata, filtrata e poi trasmessa
 ---
 Studio di come il sistema funziona nel suo complesso (esempio dall’immagine rilevata, processata, filtrata e poi trasmessa). Esercitazione in gruppo su scheda ARDUINO di un esempio.
