@@ -1,11 +1,11 @@
-## Arduino-PCTO-TLC
+# Arduino-PCTO-TLC
 
 ![analytics image (flat)](https://raw.githubusercontent.com/vitr/google-analytics-beacon/master/static/badge-flat.gif)
 ![analytics](https://www.google-analytics.com/collect?v=1&cid=555&t=pageview&ec=repo&ea=open&dp=/Plantilla-de-repositorio/readme&dt=&tid=UA-4677001-16)
 
 
 
-# OPEN CAMPUS - PCTO (PERCORSI PER LE COMPETENZE TRASVERSALI E PER L'ORIENTAMENTO) 👇
+## OPEN CAMPUS - PCTO (PERCORSI PER LE COMPETENZE TRASVERSALI E PER L'ORIENTAMENTO) 👇
 
 I Percorsi per le competenze trasversali e per l’orientamento (ex Alternanza Scuola Lavoro) hanno l’obiettivo di orientare i giovani nella scelta del percorso universitario e di far acquisire loro in via prioritaria le competenze trasversali utili alla loro futura occupabilità.
 Le competenze trasversali hanno un ruolo chiave nei percorsi di formazione e di apprendimento di studenti e studentesse e contribuiscono alla loro crescita umana, culturale, sociale e professionale. Le soft skills permettono inoltre di acquisire una serie di conoscenze, abilità e atteggiamenti utili per muoversi in diversi contesti sociali e affrontare le sfide del mondo del lavoro.
