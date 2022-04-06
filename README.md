@@ -1,9 +1,7 @@
-# Arduino-PCTO-TLC
+# PCTO-TLC
 
 ![analytics image (flat)](https://raw.githubusercontent.com/vitr/google-analytics-beacon/master/static/badge-flat.gif)
 ![analytics](https://www.google-analytics.com/collect?v=1&cid=555&t=pageview&ec=repo&ea=open&dp=/Plantilla-de-repositorio/readme&dt=&tid=UA-4677001-16)
-
-
 
 ## OPEN CAMPUS - PCTO (PERCORSI PER LE COMPETENZE TRASVERSALI E PER L'ORIENTAMENTO) 👇
 
@@ -12,10 +10,8 @@ Le competenze trasversali hanno un ruolo chiave nei percorsi di formazione e di 
 Allo scopo di rafforzare l’attività di orientamento di natura vocazionale, per l’a.a. 21/22 il Politecnico di Torino propone un primo catalogo di offerta di iniziative PCTO, rivolte agli studenti e alle studentesse del 3° e 4° anno delle Scuole Secondarie superiori.
 Per questa prima edizione dell’iniziativa le Scuole coinvolte nei percorsi PCTO del Politecnico di Torino saranno individuate all’interno del bacino di scuole del territorio che partecipano al Progetto di Orientamento Formativo ed. 2022. Per le edizioni successive, sulla base dell’andamento della sperimentazione, sarà possibile estendere ulteriormente le iniziative ad altri istituti anche fuori regione.
 
-<h1 align="center"> Nombre de la herramienta</h1>
-<p align="center"> Logo e imagen o gif de la interfaz principal de la herramienta</p>
-<p align="center"><img src="https://github.com/jorgearomeron/Arduino-PCTO-TLC/blob/main/ELFICI.png?raw=true" width="350" title="hover text">/></p> 
-![alt text](https://github.com/jorgearomeron/Arduino-PCTO-TLC/blob/main/ELFICI.png?raw=true)
+<p align="center"><img src="https://github.com/jorgearomeron/Arduino-PCTO-TLC/blob/main/ELFICI.png?raw=true" width="350" title="hover text"></p> 
+
 
 ## Tabla de contenidos:
 ---
