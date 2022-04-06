@@ -17,8 +17,8 @@ Per questa prima edizione dell’iniziativa le Scuole coinvolte nei percorsi PCT
 ---
 
 - [Esempio le antenne di ricetrasmissione](#Esempio-le-antenne-di-ricetrasmissione)
-- [Esempio la trasformazione dell’immagine con un filtro](#Esempio-la-trasformazione-dell’immagine-con-un-filtro)
-- [Esempio dall’immagine rilevata, processata, filtrata e poi trasmessa](#Esempio-dall’immagine-rilevata,-processata,-filtrata-e-poi-trasmessa)
+- [Esempio la trasformazione dell’immagine con un filtro](#Esempio-la-trasformazione-dell’-immagine-con-un-filtro)
+- [Esempio dall’immagine rilevata, processata, filtrata e poi trasmessa](#Esempio-dall’-immagine-rilevata,-processata,-filtrata-e-poi-trasmessa)
 
 ## Esempio le antenne di ricetrasmissione
 ---
