@@ -5,10 +5,12 @@
 
 
 
-## La plantilla empieza aquí 👇
+# OPEN CAMPUS - PCTO (PERCORSI PER LE COMPETENZE TRASVERSALI E PER L'ORIENTAMENTO) 👇
 
-
-*Esta herramienta digital forma parte del catálogo de herramientas del **Banco Interamericano de Desarrollo**. Puedes conocer más sobre la iniciativa del BID en [code.iadb.org](https://code.iadb.org)*
+I Percorsi per le competenze trasversali e per l’orientamento (ex Alternanza Scuola Lavoro) hanno l’obiettivo di orientare i giovani nella scelta del percorso universitario e di far acquisire loro in via prioritaria le competenze trasversali utili alla loro futura occupabilità.
+Le competenze trasversali hanno un ruolo chiave nei percorsi di formazione e di apprendimento di studenti e studentesse e contribuiscono alla loro crescita umana, culturale, sociale e professionale. Le soft skills permettono inoltre di acquisire una serie di conoscenze, abilità e atteggiamenti utili per muoversi in diversi contesti sociali e affrontare le sfide del mondo del lavoro.
+Allo scopo di rafforzare l’attività di orientamento di natura vocazionale, per l’a.a. 21/22 il Politecnico di Torino propone un primo catalogo di offerta di iniziative PCTO, rivolte agli studenti e alle studentesse del 3° e 4° anno delle Scuole Secondarie superiori.
+Per questa prima edizione dell’iniziativa le Scuole coinvolte nei percorsi PCTO del Politecnico di Torino saranno individuate all’interno del bacino di scuole del territorio che partecipano al Progetto di Orientamento Formativo ed. 2022. Per le edizioni successive, sulla base dell’andamento della sperimentazione, sarà possibile estendere ulteriormente le iniziative ad altri istituti anche fuori regione.
 
 <h1 align="center"> Nombre de la herramienta</h1>
 <p align="center"> Logo e imagen o gif de la interfaz principal de la herramienta</p>
