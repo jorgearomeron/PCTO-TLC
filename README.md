@@ -14,7 +14,7 @@ Per questa prima edizione dell’iniziativa le Scuole coinvolte nei percorsi PCT
 
 <h1 align="center"> Nombre de la herramienta</h1>
 <p align="center"> Logo e imagen o gif de la interfaz principal de la herramienta</p>
-<p align="center"><img src="C:\Users\jorge\Desktop\Arduino\New folder\ELFICI.png" width="350" title="hover text">/></p> 
+<p align="center"><img src="https://github.com/jorgearomeron/Arduino-PCTO-TLC/blob/main/ELFICI.png?raw=true" width="350" title="hover text">/></p> 
 ![alt text](https://github.com/jorgearomeron/Arduino-PCTO-TLC/blob/main/ELFICI.png?raw=true)
 
 ## Tabla de contenidos:
