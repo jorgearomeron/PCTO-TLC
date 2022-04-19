@@ -1,85 +1,120 @@
 /*
-  LED
-  This example creates a Bluetooth® Low Energy peripheral with service that contains a
-  characteristic to control an LED.
-  The circuit:
-  - Arduino MKR WiFi 1010, Arduino Uno WiFi Rev2 board, Arduino Nano 33 IoT,
-    Arduino Nano 33 BLE, or Arduino Nano 33 BLE Sense board.
-  You can use a generic Bluetooth® Low Energy central app, like LightBlue (iOS and Android) or
-  nRF Connect (Android), to interact with the services and characteristics
-  created in this sketch.
-  This example code is in the public domain.
+Controllo LED
+Questo esempio esegue la scansione delle periferiche Bluetooth® Low Energy fino a una con il servizio pubblicizzato
+UUID trovato "19b10000-e8f2-537e-4f6c-d104768a1219". Una volta scoperto e connesso,
+controllerà a distanza il LED della periferica Bluetooth® Low Energy, quando il pulsante viene premuto o rilasciato.
 */
 
-#include <ArduinoBLE.h>
+#include <ArduinoBLE.h> // Includere la libreria per gestire il Bluetooth
 
-BLEService ledService("19B10000-E8F2-537E-4F6C-D104768A1214"); // Bluetooth® Low Energy LED Service
+BLEService ledService("19B10000-E8F2-537E-4F6C-D104768A1214"); // Servizio LED Bluetooth® a basso consumo energetico
 
-// Bluetooth® Low Energy LED Switch Characteristic - custom 128-bit UUID, read and writable by central
-BLEByteCharacteristic switchCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite);
+// Caratteristica interruttore LED Bluetooth® Low Energy - UUID a 128 bit personalizzato, leggibile e scrivibile dalla centrale
+BLEByteCharacteristic switchCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1219", BLERead | BLEWrite);
 
-const int ledPin = LED_BUILTIN; // pin to use for the LED
+const int ledPin = LED_BUILTIN; // pin da utilizzare per il LED
+
+/*
+
+SETUP()
+Usalo per inizializzare variabili, modalità pin, iniziare a usare le librerie, ecc. 
+La funzione di configurazione verrà eseguita solo una volta, 
+dopo ogni accensione o ripristino della scheda Arduino.
+
+*/
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(9600); // inizializza la 
+
+   /*
+  while:
+  Un ciclo while si ripeterà continuamente, e all'infinito, finché l'espressione tra parentesi, () diventa falsa. 
+  Qualcosa deve cambiare la variabile testata, altrimenti il ciclo while non uscirà mai. 
+  Potrebbe essere nel codice, ad esempio una variabile incrementata, o una condizione esterna, come il test di un sensore. 
+  Nel nostro caso la comunicazione seriale
+
+  */
+
   while (!Serial);
 
-  // set LED pin to output mode
+  //inizializza il pin del pulsante come output
   pinMode(ledPin, OUTPUT);
 
-  // begin initialization
+ // inizializzare l'hardware Bluetooth® Low Energy
   if (!BLE.begin()) {
-    Serial.println("starting Bluetooth® Low Energy module failed!");
-
-    while (1);
+    Serial.println("starting Bluetooth® Low Energy module failed!"); //stampa messaggio bluetooth su terminale seriale
+ 
+    while (1); //while: Un ciclo while si ripeterà continuamente, e all'infinito, finché l'espressione tra parentesi, () diventa falsa. 
   }
 
-  // set advertised local name and service UUID:
+  // imposta il nome locale pubblicizzato e l'UUID del servizio:
   BLE.setLocalName("LED");
   BLE.setAdvertisedService(ledService);
 
-  // add the characteristic to the service
+  // aggiungere la caratteristica al servizio
   ledService.addCharacteristic(switchCharacteristic);
 
-  // add service
+  // aggiungere il servizio
   BLE.addService(ledService);
 
-  // set the initial value for the characeristic:
+  // impostare il valore iniziale per la caratteristica:
   switchCharacteristic.writeValue(0);
 
-  // start advertising
+  // inizio annuncio
   BLE.advertise();
 
-  Serial.println("BLE LED Peripheral");
+  Serial.println("BLE LED Peripheral"); //stampa messaggio bluetooth su terminale seriale
 }
 
+/*
+  loop():
+  Dopo aver creato una funzione setup(), che inizializza e imposta i valori iniziali, 
+  la funzione loop() fa esattamente ciò che suggerisce il suo nome e si ripete in loop, 
+  consentendo al programma di cambiare e rispondere. 
+  Usalo per controllare attivamente la scheda Arduino.
+*/
+
 void loop() {
-  // listen for Bluetooth® Low Energy peripherals to connect:
+  // ascolta le periferiche Bluetooth® Low Energy per la connessione:
   BLEDevice central = BLE.central();
 
-  // if a central is connected to peripheral:
+  /* 
+  L'istruzione if: 
+  verifica una condizione ed esegue la seguente istruzione o insieme di istruzioni se la condizione è "vera".
+  */
+
+  // if una centrale è collegata a una periferica
   if (central) {
     Serial.print("Connected to central: ");
-    // print the central's MAC address:
+    // stampa l'indirizzo MAC della centrale:
     Serial.println(central.address());
 
-    // while the central is still connected to peripheral:
-    while (central.connected()) {
-      // if the remote device wrote to the characteristic,
-      // use the value to control the LED:
+    /*
+
+    while:
+    Un ciclo while si ripeterà continuamente, e all'infinito, finché l'espressione tra parentesi, () diventa falsa. 
+    Qualcosa deve cambiare la variabile testata, altrimenti il ciclo while non uscirà mai. 
+    Potrebbe essere nel codice, ad esempio una variabile incrementata, o una condizione esterna, come il test di un sensore. 
+    Nel nostro caso La periferica Bluetooth
+
+   */
+       
+    while (central.connected()) {  // while la centrale è ancora collegata alla periferica:
+      // if il dispositivo remoto ha scritto alla caratteristica,
+      // utilizzare il valore per controllare il LED:
       if (switchCharacteristic.written()) {
-        if (switchCharacteristic.value()) {   // any value other than 0
+        if (switchCharacteristic.value()) {   //qualsiasi valore diverso da 0
           Serial.println("LED on");
-          digitalWrite(ledPin, HIGH);         // will turn the LED on
-        } else {                              // a 0 value
+          digitalWrite(ledPin, HIGH);         // accenderà il LED
+        } else {                              // un valore 0
           Serial.println(F("LED off"));
-          digitalWrite(ledPin, LOW);          // will turn the LED off
+          digitalWrite(ledPin, LOW);          //spegnerà il LED
         }
       }
     }
 
-    // when the central disconnects, print it out:
-    Serial.print(F("Disconnected from central: "));
-    Serial.println(central.address());
+    // quando la centrale si disconnette, stampalo:
+    Serial.print(F("Disconnected from central: ")); //stampa messaggio bluetooth su terminale seriale
+    Serial.println(central.address()); //stampa messaggio bluetooth su terminale seriale
   }
 }

@@ -1,45 +1,67 @@
 /*
-  LED Control
-  This example scans for Bluetooth® Low Energy peripherals until one with the advertised service
-  "19b10000-e8f2-537e-4f6c-d104768a1214" UUID is found. Once discovered and connected,
-  it will remotely control the Bluetooth® Low Energy peripheral's LED, when the button is pressed or released.
-  The circuit:
-  - Arduino MKR WiFi 1010, Arduino Uno WiFi Rev2 board, Arduino Nano 33 IoT,
-    Arduino Nano 33 BLE, or Arduino Nano 33 BLE Sense board.
-  - Button with pull-up resistor connected to pin 2.
-  You can use it with another board that is compatible with this library and the
-  Peripherals -> LED example.
-  This example code is in the public domain.
+Controllo LED
+Questo esempio esegue la scansione delle periferiche Bluetooth® Low Energy fino a una con il servizio pubblicizzato
+UUID trovato "19b10000-e8f2-537e-4f6c-d104768a1219". Una volta scoperto e connesso,
+controllerà a distanza il LED della periferica Bluetooth® Low Energy, quando il pulsante viene premuto o rilasciato.
 */
 
-#include <ArduinoBLE.h>
+#include <ArduinoBLE.h> // Includere la libreria per gestire il Bluetooth
 
-// variables for button
-const int buttonPin = 2;
-int oldButtonState = LOW;
+// variabili per pulsante
+const int buttonPin = 2; // I pulsanti o gli interruttori collegano due punti in un circuito quando vengono premuti
+int oldButtonState = LOW;  // stato precedente del pulsante
 
+/*
+
+SETUP()
+Usalo per inizializzare variabili, modalità pin, iniziare a usare le librerie, ecc. 
+La funzione di configurazione verrà eseguita solo una volta, 
+dopo ogni accensione o ripristino della scheda Arduino.
+
+*/
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(9600); // inizializza la comunicazione seriale
+
+  /*
+  while:
+  Un ciclo while si ripeterà continuamente, e all'infinito, finché l'espressione tra parentesi, () diventa falsa. 
+  Qualcosa deve cambiare la variabile testata, altrimenti il ciclo while non uscirà mai. 
+  Potrebbe essere nel codice, ad esempio una variabile incrementata, o una condizione esterna, come il test di un sensore. 
+  Nel nostro caso la comunicazione seriale
+
+  */
+
   while (!Serial);
 
-  // configure the button pin as input
-  pinMode(buttonPin, INPUT);
+ // configura il pin del pulsante come input
+  pinMode(buttonPin, INPUT); //inizializza il pin del pulsante come input
 
-  // initialize the Bluetooth® Low Energy hardware
+  // inizializzare l'hardware Bluetooth® Low Energy
   BLE.begin();
 
-  Serial.println("Bluetooth® Low Energy Central - LED control");
+  Serial.println("Bluetooth® Low Energy Central - LED control"); //stampa messaggio bluetooth su terminale seriale
 
-  // start scanning for peripherals
+  // avviare la scansione per le periferiche
   BLE.scanForUuid("19b10000-e8f2-537e-4f6c-d104768a1219");
 }
 
+/* 
+loop()
+controlla se è stata rilevata una periferica 
+e invierà serial se viene premuto
+*/ 
+
 void loop() {
-  // check if a peripheral has been discovered
-  BLEDevice peripheral = BLE.available();
+
+  BLEDevice peripheral = BLE.available(); //BLEDevice che rappresenta il dispositivo rilevato
+
+  /* 
+  L'istruzione if: 
+  verifica una condizione ed esegue la seguente istruzione o insieme di istruzioni se la condizione è "vera".
+  */
 
   if (peripheral) {
-    // discovered a peripheral, print out address, local name, and advertised service
+    //scoperto una periferica, stampare l'indirizzo, il nome locale e il servizio pubblicizzato
     Serial.print("Found ");
     Serial.print(peripheral.address());
     Serial.print(" '");
@@ -49,36 +71,44 @@ void loop() {
     Serial.println();
 
     if (peripheral.localName() != "LED") {
-      return;
+      return;  // L'istruzione return: Terminare una funzione e restituire un valore da una funzione alla funzione chiamante, se lo si desidera.
     }
 
-    // stop scanning
+    // interrompere la scansione
     BLE.stopScan();
 
     controlLed(peripheral);
 
-    // peripheral disconnected, start scanning again
+    // periferica disconnessa, riavviare la scansione
     BLE.scanForUuid("19b10000-e8f2-537e-4f6c-d104768a1219");
   }
 }
 
+/*
+
+Void:
+La parola chiave void viene utilizzata solo nelle dichiarazioni di funzione. 
+Indica che la funzione non deve restituire alcuna informazione alla funzione da cui è stata chiamata.
+
+*/
+
 void controlLed(BLEDevice peripheral) {
-  // connect to the peripheral
-  Serial.println("Connecting ...");
+  // connettersi alla periferica
+  Serial.println("Connecting ..."); //stampa messaggio bluetooth su terminale seriale
 
   if (peripheral.connect()) {
-    Serial.println("Connected");
-  } else {
-    Serial.println("Failed to connect!");
+    Serial.println("Connected"); //stampa messaggio bluetooth su terminale seriale
+  } else { //L'istruzione else: consente un maggiore controllo sul flusso di codice rispetto all'istruzione if di base, consentendo il raggruppamento di più test
+    Serial.println("Failed to connect!"); //stampa messaggio bluetooth su terminale seriale
     return;
   }
 
   // discover peripheral attributes
-  Serial.println("Discovering attributes ...");
+  Serial.println("Discovering attributes ..."); //stampa messaggio bluetooth su terminale seriale
   if (peripheral.discoverAttributes()) {
-    Serial.println("Attributes discovered");
+    Serial.println("Attributes discovered"); //stampa messaggio bluetooth su terminale seriale
   } else {
-    Serial.println("Attribute discovery failed!");
+    Serial.println("Attribute discovery failed!"); //stampa messaggio bluetooth su terminale seriale
     peripheral.disconnect();
     return;
   }
@@ -87,38 +117,47 @@ void controlLed(BLEDevice peripheral) {
   BLECharacteristic ledCharacteristic = peripheral.characteristic("19b10001-e8f2-537e-4f6c-d104768a1219");
 
   if (!ledCharacteristic) {
-    Serial.println("Peripheral does not have LED characteristic!");
+    Serial.println("Peripheral does not have LED characteristic!"); //stampa messaggio bluetooth su terminale seriale
     peripheral.disconnect();
     return;
   } else if (!ledCharacteristic.canWrite()) {
-    Serial.println("Peripheral does not have a writable LED characteristic!");
+    Serial.println("Peripheral does not have a writable LED characteristic!"); //stampa messaggio bluetooth su terminale seriale
     peripheral.disconnect();
     return;
   }
 
-  while (peripheral.connected()) {
-    // while the peripheral is connected
+   /*
+  while:
+  Un ciclo while si ripeterà continuamente, e all'infinito, finché l'espressione tra parentesi, () diventa falsa. 
+  Qualcosa deve cambiare la variabile testata, altrimenti il ciclo while non uscirà mai. 
+  Potrebbe essere nel codice, ad esempio una variabile incrementata, o una condizione esterna, come il test di un sensore. 
+  Nel nostro caso La periferica Bluetooth
 
-    // read the button pin
+  */
+  
+  while (peripheral.connected()) {
+    // while, la periferica è collegata
+
+    // leggi il pin del pulsante
     int buttonState = digitalRead(buttonPin);
 
     if (oldButtonState != buttonState) {
-      // button changed
+      // pulsante cambiato
       oldButtonState = buttonState;
 
       if (buttonState) {
-        Serial.println("button pressed");
+        Serial.println("button pressed"); //stampa messaggio bluetooth su terminale seriale
 
-        // button is pressed, write 0x01 to turn the LED on
+        // viene premuto il pulsante, scrivere 0x01 per accendere il LED
         ledCharacteristic.writeValue((byte)0x01);
       } else {
         Serial.println("button released");
 
-        // button is released, write 0x00 to turn the LED off
+        // il pulsante viene rilasciato, scrivere 0x00 per spegnere il LED
         ledCharacteristic.writeValue((byte)0x00);
       }
     }
   }
 
-  Serial.println("Peripheral disconnected");
+  Serial.println("Peripheral disconnected"); //stampa messaggio bluetooth su terminale seriale
 }
